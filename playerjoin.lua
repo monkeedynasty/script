@@ -12,11 +12,12 @@ loadstring([[
 
         local jsonData = HttpService:JSONEncode(data)
 
-        -- Send the message to Discord via the webhook
+        -- Attempt to send the message to Discord via the webhook
         local success, errorMessage = pcall(function()
             HttpService:PostAsync(webhookUrl, jsonData, Enum.HttpContentType.ApplicationJson)
         end)
 
+        -- Log the result or error
         if not success then
             warn("Failed to send message to Discord: " .. errorMessage)
         else
@@ -24,6 +25,6 @@ loadstring([[
         end
     end
 
-    -- Send "Hello" to Discord
+    -- Send a test message "Hello from Roblox!"
     sendToDiscord("Hello from Roblox!")
 ]] )()
